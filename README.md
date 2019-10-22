@@ -61,10 +61,14 @@ write.csv(minilaws, "minilaws.csv")
 
 minilaws <- minilaws %>% select(SCHNAME, PROVINCE, LEVEL, YEAR, PROCEDURE)
 
+#this includes visualization
 
+by_procedure <- minilaws %>% select(PROVINCE, LEVEL, YEAR, PROCEDURE)%>% na.omit()%>%
+group_by(PROCEDURE)%>%summarize(TOTAL = n())%>% arrange(desc(TOTAL))
 
-
-
+library(ggplot2)
+ggplot(by_procedure, aes (x=reorder(PROCEDURE, -TOTAL), y=TOTAL)) + geom_col() +
+labs(title="School-related Legislations by Procedure", x="PROCEDURE")
 
 
 
