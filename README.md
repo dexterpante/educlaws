@@ -4,7 +4,7 @@
 library(tidyverse)
 library(readxl)
 library(lubridate)
-laws <- read_excel("C:/Users/user/OneDrive - Department of Education/legal/DepEd Laws.xls",
+laws <- read_excel("DepEd Laws.xls",
 col_types = c("text", "text", "date"))
 laws$TITLE <- tolower(laws$TITLE)
 #transforms text into lower case
